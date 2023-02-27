@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//1. Iterative breadth-first solution
 // func hasPath(graph map[string][]string, src string, dst string) bool {
 //     queue := []string{src}
 
@@ -20,8 +21,16 @@ import "fmt"
 //     return false
 // }
 
+//2. Recursive depth-first solution
 func hasPath(graph map[string][]string, src string, dst string) bool {
-    if src === dst { return true }
+    if src == dst { return true }
+
+	for _, neighbor := range graph[src] {
+		if hasPath(graph, neighbor, dst) == true {
+			return true
+		}
+	}
+	return false
 }
 
 func main() {
@@ -34,5 +43,5 @@ func main() {
 	graph["j"] = []string{"i"}
 	graph["k"] = []string{}
 
-	hasPath(graph, "f", "j")
+	hasPath(graph, "f", "k")
 }
