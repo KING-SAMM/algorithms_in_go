@@ -14,36 +14,31 @@ Write a function, undirectedPath, that takes in an array of edges for an undirec
 func undirectedPath(edges []string, nodeA string, nodeB string) bool {
 	graph := buildEdges(edges)
 
-	return hasPath(graph, nodeA, nodeB, visited)
+	return hasPath(graph, nodeA, nodeB, make(map[string]struct{}))
 }
 
-func hasPath(graph map[string][]string, src string, dst string, visited []string) bool {
+func hasPath(graph map[string][]string, src string, dst string, visited map[string]struct{}) bool {
     if src == dst { return true }
-	if ()
-	visited = append(visited, src)
+	if has(visited, src) { return false }
+	visited[src] = struct{}{}
 
 	for _, neighbor := range graph[src] {
-		if hasPath(graph, neighbor, dst) == true {
+		if hasPath(graph, neighbor, dst, visited) == true {
 			return true
 		}
 	}
 	return false
 }
 
-const hasPath = (graph, src, dst, visited) => {
-	if (src === dst) return true;
-	if (visited.has(src)) return false;
-
-	visited.add(src);
-
-	for (let neighbor of graph[src]) {
-		if (hasPath(graph, neighbor, dst, visited) === true) {
-			return true;
-		};
-	};
-
-	return false;
+func has(set map[string]struct{}, entry string) bool {
+	for key, _ := range set {
+		if (key == entry) {
+			return true
+		}
+	}
+	return false
 }
+
 
 const buildEdges = (edges) => [
 	const graph = {};
