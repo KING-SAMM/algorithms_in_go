@@ -60,8 +60,6 @@ func buildNodes(edges [][]string) map[string][]string {
 
 		graph[a] = append(graph[a], b)
 		graph[b] = append(graph[b], a)
-		
-		fmt.Printf("The edge is %v\n", edge)
 	}
 	return graph
 }
@@ -79,5 +77,5 @@ func main() {
 	edge = []string{"o", "n"}
 	edges = append(edges, edge)
 
-	undirectedPath(edges, "i", "m")
+	undirectedPath(edges, "j", "m")
 }
