@@ -2,18 +2,10 @@ package main
 
 import "fmt"
 
-/*--------------------------------------------
-| Connected Component Count
----------------------------------------------*/
-/*
-Write a function, connectedComponentsCount, that takes in the adjacency list of an undirected graph. The function should return the number of connected components within the graph.
-
-* https://structy.net/problems/connected-comoponents-count
-*/
-
 func connectedComponentsCount(graph map[int][]int) int {
 	visited := make(map[int]struct{})
 	count := 0
+
 	for node := range graph {
 		if explore(graph, node, visited) == true {
 			count += 1
@@ -32,7 +24,7 @@ func explore(graph map[int][]int, current int, visited map[int]struct{}) bool {
 	return true
 }
 
-// Check if an element exists in a map 
+// Check if an element exists in a set 
 func has(set map[int]struct{}, entry int) bool {
 	for key, _ := range set {
 		if (key == entry) {
