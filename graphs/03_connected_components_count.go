@@ -2,6 +2,16 @@ package main
 
 import "fmt"
 
+/*--------------------------------------------
+| Connected Components Count
+---------------------------------------------*/
+
+/*
+Write a function, connectedComponentsCount, that takes in the adjacency list of an undirected graph. The function should return the number of connected components within the graph.
+
+* https://structy.net/problems/connected-components-count
+*/
+
 func connectedComponentsCount(graph map[int][]int) int {
 	visited := make(map[int]struct{})
 	count := 0
