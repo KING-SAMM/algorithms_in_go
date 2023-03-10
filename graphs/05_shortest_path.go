@@ -16,3 +16,114 @@ import "fmt"
  * @param {String} nodeA 
  * @param {String} nodeB 
  */
+
+
+ func shortestPath(edges, nodeA, nodeB) {
+	graph := buildGraph(edges)
+
+	queue := make([][]interface{}, 0)
+	queue = append(queue, []interface{}{node, 0})
+ }
+
+ func main() {
+   
+
+// 	const edges = [
+//   ['w', 'x'],
+//   ['x', 'y'],
+//   ['z', 'y'],
+//   ['z', 'v'],
+//   ['w', 'v']
+// ];
+
+// shortestPath(edges, 'w', 'z'); // -> 2
+
+
+// const edges = [
+//   ['w', 'x'],
+//   ['x', 'y'],
+//   ['z', 'y'],
+//   ['z', 'v'],
+//   ['w', 'v']
+// ];
+
+// shortestPath(edges, 'y', 'x'); // -> 1
+
+
+// const edges = [
+//   ['a', 'c'],
+//   ['a', 'b'],
+//   ['c', 'b'],
+//   ['c', 'd'],
+//   ['b', 'd'],
+//   ['e', 'd'],
+//   ['g', 'f']
+// ];
+
+// shortestPath(edges, 'a', 'e'); // -> 3
+
+
+// const edges = [
+//   ['a', 'c'],
+//   ['a', 'b'],
+//   ['c', 'b'],
+//   ['c', 'd'],
+//   ['b', 'd'],
+//   ['e', 'd'],
+//   ['g', 'f']
+// ];
+
+// shortestPath(edges, 'e', 'c'); // -> 2
+
+
+
+// const edges = [
+//   ['a', 'c'],
+//   ['a', 'b'],
+//   ['c', 'b'],
+//   ['c', 'd'],
+//   ['b', 'd'],
+//   ['e', 'd'],
+//   ['g', 'f']
+// ];
+
+// shortestPath(edges, 'b', 'g'); // -> -1
+
+
+// const edges = [
+//   ['c', 'n'],
+//   ['c', 'e'],
+//   ['c', 's'],
+//   ['c', 'w'],
+//   ['w', 'e'],
+// ];
+
+// shortestPath(edges, 'w', 'e'); // -> 1
+
+
+
+// const edges = [
+//   ['c', 'n'],
+//   ['c', 'e'],
+//   ['c', 's'],
+//   ['c', 'w'],
+//   ['w', 'e'],
+// ];
+
+// shortestPath(edges, 'n', 'e'); // -> 2
+
+
+
+// const edges = [
+//   ['m', 'n'],
+//   ['n', 'o'],
+//   ['o', 'p'],
+//   ['p', 'q'],
+//   ['t', 'o'],
+//   ['r', 'q'],
+//   ['r', 's']
+// ];
+
+// shortestPath(edges, 'm', 's'); // -> 6
+
+ }
