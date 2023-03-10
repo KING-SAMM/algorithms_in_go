@@ -15,16 +15,16 @@ func undirectedPath(edges [][]string, nodeA string, nodeB string) bool {
 	graph := buildNodes(edges)
 
 	// fmt.Println(hasPath(graph, nodeA, nodeB, make(map[string]struct{})))
-	return hasPath(graph, nodeA, nodeB, make(map[string]bool))
+	return hasPath(graph, nodeA, nodeB, make(map[string]struct{}))
 }
 
 // Implement hasPath algorithm
 // Use map data structure (as a set) to keep track of visited nodes
 // in order to avoid infinite loops from cyclic paths
-func hasPath(graph map[string][]string, src string, dst string, visited map[string]bool) bool {
+func hasPath(graph map[string][]string, src string, dst string, visited map[string]struct{}) bool {
     if src == dst { return true }
 	if has(visited, src) { return false }
-	visited[src] = true
+	visited[src] = struct{}{}
 
 	for _, neighbor := range graph[src] {
 		if hasPath(graph, neighbor, dst, visited) == true {
@@ -35,7 +35,7 @@ func hasPath(graph map[string][]string, src string, dst string, visited map[stri
 }
 
 // Check if an element exists in a map 
-func has(set map[string]bool, entry string) bool {
+func has(set map[string]struct{}, entry string) bool {
 	for key, _ := range set {
 		if (key == entry) {
 			return true
@@ -65,16 +65,10 @@ func buildNodes(edges [][]string) map[string][]string {
 }
 
 func main() {
-	edges := make([][]string, 0)
-
 	/*-------------
 	| EDGES A
 	---------------*/
-	edges = append(edges, []string{"i", "j"})
-	edges = append(edges, []string{"k", "i"})
-	edges = append(edges, []string{"m", "k"})
-	edges = append(edges, []string{"k", "l"})
-	edges = append(edges, []string{"o", "n"})
+	edges := [][]string{ {"i", "j"}, {"k", "i"}, {"m", "k"}, {"k", "l"}, {"o", "n"} }
 
 	fmt.Println(undirectedPath(edges, "j", "m")) // true
 	// fmt.Println(undirectedPath(edges, "m", "j")) // true
@@ -137,13 +131,7 @@ func main() {
 	/*-------------
 	| EDGES B
 	---------------*/
-	// edges = append(edges, []string{"a", "b"})
-	// edges = append(edges, []string{"c", "a"})
-	// edges = append(edges, []string{"b", "c"})
-	// edges = append(edges, []string{"q", "r"})
-	// edges = append(edges, []string{"q", "s"})
-	// edges = append(edges, []string{"q", "u"})
-	// edges = append(edges, []string{"q", "t"})
+	// edges := [][]string{ {"a", "b"}, {"c", "a"}, {"b", "c"}, {"q", "r"}, {"q", "s"}, {"q", "u"}, {"q", "t"} }
 
 	// fmt.Println(undirectedPath(edges, "a", "b")) // true
 	// fmt.Println(undirectedPath(edges, "a", "c")) // true
@@ -203,9 +191,7 @@ func main() {
 	/*-------------
 	| EDGES C
 	---------------*/
-	// edges = append(edges, []string{"s", "r"})
-	// edges = append(edges, []string{"t", "q"})
-	// edges = append(edges, []string{"q", "r"})
+	// edges := [][]string{ {"s", "r"}, {"t", "q"}, {"q", "r"} }
 
 	// fmt.Println(undirectedPath(edges, "r", "t")) // true
 		

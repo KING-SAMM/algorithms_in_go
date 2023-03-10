@@ -18,15 +18,17 @@ import "fmt"
  */
 
 
- func shortestPath(edges, nodeA, nodeB) {
-	graph := buildGraph(edges)
+//  func shortestPath(edges, nodeA, nodeB) {
+// 	graph := buildGraph(edges)
 
-	queue := make([][]interface{}, 0)
-	queue = append(queue, []interface{}{node, 0})
- }
+// 	queue := make([][]interface{}, 0)
+// 	queue = append(queue, []interface{}{node, 0})
+//  }
 
  func main() {
-   
+	edges := [][]string{ {"w", "x"}, {"x", "y"}, {"z", "y"}, {"z", "v"}, {"w", "v"} }
+
+	fmt.Printf("Edges are: \n %v", edges)
 
 // 	const edges = [
 //   ['w', 'x'],
