@@ -18,114 +18,119 @@ import "fmt"
  */
 
 
-//  func shortestPath(edges, nodeA, nodeB) {
-// 	graph := buildGraph(edges)
+ func shortestPath(edges [][]string, nodeA string, nodeB string) int {
+	graph := buildGraph(edges)
+	visited := make(map[string]bool)
+	queue := [][]interface{}{ {nodeA, 0} }	
+	visited[nodeA] = true
 
-// 	queue := make([][]interface{}, 0)
-// 	queue = append(queue, []interface{}{node, 0})
-//  }
+	for len(queue) > 0 {
+		node, distance := queue[0][0], queue[0][1]
+		queue = queue[1:]
+
+		if node == nodeB {
+			return distance.(int)
+		}
+
+		for _, neighbor := range graph[node.(string)] {
+			if _, ok := visited[neighbor]; !ok {
+				visited[neighbor] = true
+				queue = append(queue, []interface{}{neighbor, distance.(int) + 1})
+			}
+		}
+	}
+	return -1
+ }
+
+ // Build up the graph of nodes from the edges
+func buildGraph(edges [][]string) map[string][]string {
+	graph := make(map[string][]string)
+
+	for _, edge := range edges {
+		a, b := edge[0], edge[1]
+
+		if _, ok := graph[a]; !ok {
+			graph[a] = make([]string, 0)
+		}
+		if _, ok := graph[b]; !ok {
+			graph[b] = make([]string, 0)
+		}
+
+		graph[a] = append(graph[a], b)
+		graph[b] = append(graph[b], a)
+	}
+	return graph
+}
 
  func main() {
+	/*-------------
+	| EDGES A
+	---------------*/
 	edges := [][]string{ {"w", "x"}, {"x", "y"}, {"z", "y"}, {"z", "v"}, {"w", "v"} }
 
-	fmt.Printf("Edges are: \n %v", edges)
+	// 	const edges = [
+	//   ['w', 'x'],
+	//   ['x', 'y'],
+	//   ['z', 'y'],
+	//   ['z', 'v'],
+	//   ['w', 'v']
+	// ];
 
-// 	const edges = [
-//   ['w', 'x'],
-//   ['x', 'y'],
-//   ['z', 'y'],
-//   ['z', 'v'],
-//   ['w', 'v']
-// ];
+	fmt.Println(shortestPath(edges, "w", "z")); // -> 2
+	fmt.Println(shortestPath(edges, "y", "x")); // -> 1
 
-// shortestPath(edges, 'w', 'z'); // -> 2
+	/*-------------
+	| EDGES B
+	---------------*/
+	// edges := [][]string{ {"a", "c"}, {"a", "b"}, {"c", "b"}, {"c", "d"}, {"b", "d"}, {"e", "d"}, {"g", "f"} }
 
+	// const edges = [
+	//   ['a', 'c'],
+	//   ['a', 'b'],
+	//   ['c', 'b'],
+	//   ['c', 'd'],
+	//   ['b', 'd'],
+	//   ['e', 'd'],
+	//   ['g', 'f']
+	// ];
 
-// const edges = [
-//   ['w', 'x'],
-//   ['x', 'y'],
-//   ['z', 'y'],
-//   ['z', 'v'],
-//   ['w', 'v']
-// ];
-
-// shortestPath(edges, 'y', 'x'); // -> 1
-
-
-// const edges = [
-//   ['a', 'c'],
-//   ['a', 'b'],
-//   ['c', 'b'],
-//   ['c', 'd'],
-//   ['b', 'd'],
-//   ['e', 'd'],
-//   ['g', 'f']
-// ];
-
-// shortestPath(edges, 'a', 'e'); // -> 3
+	// fmt.Println(shortestPath(edges, "a", "e")); // -> 3
+	// fmt.Println(shortestPath(edges, "e", "c")); // -> 2
+	// fmt.Println(shortestPath(edges, "b", "g")); // -> -1
 
 
-// const edges = [
-//   ['a', 'c'],
-//   ['a', 'b'],
-//   ['c', 'b'],
-//   ['c', 'd'],
-//   ['b', 'd'],
-//   ['e', 'd'],
-//   ['g', 'f']
-// ];
+	/*-------------
+	| EDGES C
+	---------------*/
+	// edges := [][]string{ {"c", "n"}, {"c", "e"}, {"c", "s"}, {"c", "w"}, {"w", "e"} }
 
-// shortestPath(edges, 'e', 'c'); // -> 2
+	// const edges = [
+	//   ['c', 'n'],
+	//   ['c', 'e'],
+	//   ['c', 's'],
+	//   ['c', 'w'],
+	//   ['w', 'e'],
+	// ];
 
-
-
-// const edges = [
-//   ['a', 'c'],
-//   ['a', 'b'],
-//   ['c', 'b'],
-//   ['c', 'd'],
-//   ['b', 'd'],
-//   ['e', 'd'],
-//   ['g', 'f']
-// ];
-
-// shortestPath(edges, 'b', 'g'); // -> -1
+	// fmt.Println(shortestPath(edges, "w", "e")); // -> 1
+	// fmt.Println(shortestPath(edges, "n", "e")); // -> 2
 
 
-// const edges = [
-//   ['c', 'n'],
-//   ['c', 'e'],
-//   ['c', 's'],
-//   ['c', 'w'],
-//   ['w', 'e'],
-// ];
+	/*-------------
+	| EDGES D
+	---------------*/
+	// edges := [][]string{ {"m", "n"}, {"n", "o"}, {"o", "p"}, {"p", "q"}, {"t", "o"}, {"r", "q"}, {"r", "s"} }
 
-// shortestPath(edges, 'w', 'e'); // -> 1
+	// const edges = [
+	//   ['m', 'n'],
+	//   ['n', 'o'],
+	//   ['o', 'p'],
+	//   ['p', 'q'],
+	//   ['t', 'o'],
+	//   ['r', 'q'],
+	//   ['r', 's']
+	// ];
 
-
-
-// const edges = [
-//   ['c', 'n'],
-//   ['c', 'e'],
-//   ['c', 's'],
-//   ['c', 'w'],
-//   ['w', 'e'],
-// ];
-
-// shortestPath(edges, 'n', 'e'); // -> 2
-
-
-
-// const edges = [
-//   ['m', 'n'],
-//   ['n', 'o'],
-//   ['o', 'p'],
-//   ['p', 'q'],
-//   ['t', 'o'],
-//   ['r', 'q'],
-//   ['r', 's']
-// ];
-
-// shortestPath(edges, 'm', 's'); // -> 6
+	// fmt.Println(shortestPath(edges, "m", "s")); // -> 6
 
  }
