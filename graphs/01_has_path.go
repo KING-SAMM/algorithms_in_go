@@ -22,7 +22,7 @@ import "fmt"
 //         current := queue[0]
 //         queue = queue[1:]
 
-// 		fmt.Printf("Queue is %v\n", queue)
+// 		   fmt.Printf("Queue is %v\n", queue)
 
 //         if current == dst { return true }
 
@@ -34,16 +34,16 @@ import "fmt"
 // }
 
 //2. Recursive depth-first solution
-// func hasPath(graph map[string][]string, src string, dst string) bool {
-//     if src == dst { return true }
+func hasPath(graph map[string][]string, src string, dst string) bool {
+    if src == dst { return true }
 
-// 	for _, neighbor := range graph[src] {
-// 		if hasPath(graph, neighbor, dst) == true {
-// 			return true
-// 		}
-// 	}
-// 	return false
-// }
+	for _, neighbor := range graph[src] {
+		if hasPath(graph, neighbor, dst) == true {
+			return true
+		}
+	}
+	return false
+}
 
 func main() {
 	
@@ -55,5 +55,5 @@ func main() {
 	graph["j"] = []string{"i"}
 	graph["k"] = []string{}
 
-	hasPath(graph, "f", "k")
+	fmt.Println(hasPath(graph, "f", "k"))
 }
