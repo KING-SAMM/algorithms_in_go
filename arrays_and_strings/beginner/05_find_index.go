@@ -11,7 +11,7 @@ package main
  * Solution: Finds the index of an element in an array.
  *
  * @param {[]int} arr - The input array.
- * @param {*} element - The element to search for.
+ * @param {Integer} element - The element to search for.
  * @returns {Integer} - The index of the element in the array, or -1 if not found.
  */
 

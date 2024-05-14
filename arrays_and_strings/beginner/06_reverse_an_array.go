@@ -16,20 +16,28 @@ package main
 
  import "fmt"
 
- func reverse(arr []int) []int {
-	length := len(arr)/2
-	start := 0
-	end := len(arr) - 1
-	for i := 0; i <= length; i++ {
-		if start < end {
-			temp := arr[start]
-			arr[start] = arr[end]
-			arr[end] = temp
-			start++
-			end--
-		}
-	}
-	return arr
+//  func reverse(arr []int) []int {
+// 	length := len(arr)/2
+// 	start := 0
+// 	end := len(arr) - 1
+// 	for i := 0; i <= length; i++ {
+// 		if start < end {
+// 			temp := arr[start]
+// 			arr[start] = arr[end]
+// 			arr[end] = temp
+// 			start++
+// 			end--
+// 		}
+// 	}
+// 	return arr
+//  }
+
+ func reverse(a []int) []int {
+	b := []int{}
+	for i := len(a) - 1; i >= 0; i-- {
+        b = append(b, a[i])
+    }
+	return b
  }
 
  func main() {
